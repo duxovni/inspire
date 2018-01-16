@@ -1,23 +1,23 @@
 name:                inspire7
 version:             0.1.0.0
-github:              "githubuser/inspire7"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+github:              "sdukhovni/inspire7"
+license:             MIT
+author:              "Van Chung and Sam Dukhovni"
+maintainer:          "inspire7@mit.edu"
+copyright:           "2018 Van Chung and Sam Dukhovni"
 
 extra-source-files:
 - README.md
 - ChangeLog.md
 
 # Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
+synopsis:            Improved interactive fiction development toolkit
+category:            Games, Development
 
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on Github at <https://github.com/githubuser/inspire7#readme>
+description:         Please see the README on Github at <https://github.com/sdukhovni/inspire7#readme>
 
 dependencies:
 - base >= 4.7 && < 5
