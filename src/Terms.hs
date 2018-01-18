@@ -21,7 +21,7 @@ data Type = TVar Int
           | TString
 
 data BinOp = Plus
-             deriving (Show, Eq)
+  deriving (Show, Eq)
 
 type EName = String
 type EDefs = Map.Map EName Expr
@@ -35,11 +35,12 @@ data Expr = EVar Int
           | EString String
           | EBinOp BinOp Expr Expr
           | EMatch IndName Expr (Map.Map ConstrName Expr)
-            deriving (Show, Eq)
+  deriving (Show, Eq)
 
 subst :: Int -> Expr -> Expr -> Expr
 subst d x (EVar n)
   | d == n = x
+  | d > n = EVar n
   | otherwise = EVar (n - 1)
 subst d x (EConstr n l) = EConstr n (fmap (subst d x) l)
 subst d x (EAbs b) = EAbs (subst (d + 1) x b)
@@ -48,12 +49,12 @@ subst d x (EBinOp b e1 e2) = EBinOp b (subst d x e1) (subst d x e2)
 subst d x (EMatch i e m) = EMatch i (subst d x e) (fmap (subst d x) m)
 subst d x e = e
 
-multisubst :: [Expr] -> Expr -> Expr
-multisubst [] b = b
-multisubst (x:xs) b = multisubst xs (subst 0 x b)
+multisubst :: Int -> [Expr] -> Expr -> Expr
+multisubst d [] b = b
+multisubst d (x:xs) b = multisubst (d - 1) xs (subst d x b)
 
 eval :: EDefs -> Expr -> Expr
-eval c (EVar _) = error "Free variable evaluated"
+eval c (EVar v) = error ("Free variable " ++ show v ++ " evaluated")
 eval c (EName n) = eval c (c Map.! n)
 eval c (EApp f a) =
   case eval c f of
@@ -67,6 +68,6 @@ eval c (EBinOp b e1 e2) =
         _ -> error "int does not reduce to constant"
 eval c (EMatch _ x m) =
   case eval c x of
-    EConstr n l -> eval c (multisubst l (m Map.! n))
+    EConstr n l -> eval c (multisubst (length l - 1) l (m Map.! n))
     _ -> error "matched term does not reduce to constr"
 eval c x = x
