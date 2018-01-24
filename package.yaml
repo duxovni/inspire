@@ -1,6 +1,6 @@
-name:                inspire7
+name:                inspire
 version:             0.1.0.0
-github:              "sdukhovni/inspire7"
+github:              "sdukhovni/inspire"
 license:             MIT
 author:              "Van Chung and Sam Dukhovni"
 maintainer:          "inspire7@mit.edu"
@@ -17,7 +17,7 @@ category:            Games, Development
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on Github at <https://github.com/sdukhovni/inspire7#readme>
+description:         Please see the README on Github at <https://github.com/sdukhovni/inspire#readme>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -28,7 +28,7 @@ library:
   source-dirs: src
 
 executables:
-  inspire7-exe:
+  inspire-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -36,10 +36,10 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - inspire7
+    - inspire
 
 tests:
-  inspire7-test:
+  inspire-test:
     main:                Spec.hs
     source-dirs:         test
     ghc-options:
@@ -47,4 +47,4 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - inspire7
+    - inspire

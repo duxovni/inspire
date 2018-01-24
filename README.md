@@ -1,4 +1,4 @@
-# Inspire 7
+# Inspire
 
-Inspire 7 is a language and user interface for creating works of
+Inspire is a language and user interface for creating works of
 interactive fiction.

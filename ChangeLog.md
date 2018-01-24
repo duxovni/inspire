@@ -1,3 +1,3 @@
-# Changelog for inspire7
+# Changelog for inspire
 
 ## Unreleased changes
